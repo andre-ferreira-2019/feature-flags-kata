@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <button id="feature-btn">Click Here!</button>
+    <p id="feature-text"></p>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#feature-btn").on("click", function () {
+                $.ajax("/api/Values")
+                    .done(function (response) {
+                        $("#feature-text").text(response);
+                    })
+            });
+        });
+    </script>
+}
